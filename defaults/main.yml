@@ -1,2 +1,27 @@
 ---
 # defaults file for fabric-ca-gui
+
+## Conatiner info
+cagui_container_name: "fabric-ca-gui"
+cagui_container_image: "gbolo/docker-membersvc-gui"
+cagui_container_image_tag: "latest"
+cagui_container_pull: false
+cagui_container_volume: "/opt/dkr_cagui"
+cagui_container_data_volume: "{{cagui_container_volume}}/data"
+cagui_container_config_volume: "{{cagui_container_volume}}/config"
+cagui_container_state: "started"
+cagui_container_restart_policy: "unless-stopped"
+cagui_container_restart_retries: 3
+
+cagui_container_ports:
+  - "8080:80"
+
+cagui_container_volumes:
+  - "{{ cagui_container_data_volume }}:/data/nginx/www/api/db"
+
+## fabric-ca-gui configuration
+cagui_enable_cronjob: false
+cagui_cronjob_path: "/etc/cron.d/fabric-ca-gui"
+cagui_cronjob_template: "cron_fabric-ca-gui.j2"
+cagui_sqlite_db_src: "/opt/fabric/ca/conf/fabric-ca-server.db"
+cagui_sqlite_db_dest: "{{ cagui_container_data_volume }}/fabric-ca.db"

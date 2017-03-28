@@ -1,0 +1,6 @@
+# Copy fabric sqlitedb
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+*/5 * * * * root /usr/bin/cp -u --force {{ cagui_sqlite_db_src }} {{ cagui_sqlite_db_dest }} && /usr/bin/chmod 755 {{ cagui_sqlite_db_dest }}

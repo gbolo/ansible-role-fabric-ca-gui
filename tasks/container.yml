@@ -1,0 +1,12 @@
+---
+
+- name: create fabric-ca gui container
+  docker_container:
+    name: "{{ cagui_container_name }}"
+    image: "{{ cagui_container_image }}:{{ cagui_container_image_tag }}"
+    state: "{{ cagui_container_state }}"
+    restart_policy: "{{ cagui_container_restart_policy }}"
+    volumes: "{{ cagui_container_volumes }}"
+    ports: "{{ cagui_container_ports }}"
+    restart_retries: "{{ cagui_container_restart_retries }}"
+    pull: "{{ cagui_container_pull }}"

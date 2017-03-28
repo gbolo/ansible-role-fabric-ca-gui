@@ -1,2 +1,6 @@
 ---
 # tasks file for fabric-ca-gui
+
+- include: install.yml
+- include: container.yml
+- include: cronjob.yml
