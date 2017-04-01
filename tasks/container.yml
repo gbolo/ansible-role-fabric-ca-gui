@@ -8,5 +8,5 @@
     restart_policy: "{{ cagui_container_restart_policy }}"
     volumes: "{{ cagui_container_volumes }}"
     ports: "{{ cagui_container_ports }}"
-#    restart_retries: "{{ cagui_container_restart_retries }}"
     pull: "{{ cagui_container_pull }}"
+    env: "{{ cagui_container_env }}"

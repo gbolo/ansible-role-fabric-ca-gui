@@ -19,7 +19,19 @@ cagui_container_ports:
 cagui_container_volumes:
   - "{{ cagui_container_data_volume }}:/data/nginx/www/api/db"
 
-## fabric-ca-gui configuration
+cagui_container_env:
+  # options are sqlite and mysql
+  "CA_DB_TYPE": "mysql"
+  # needed for mysql
+  "DB_HOST": "fabric-db.tld"
+  "DB_PORT": "3306"
+  "DB_NAME": "fabric_ca"
+  "DB_USERNAME": "fabric"
+  "DB_PASSWORD": "encrypt_this"
+  # needed for sqlite
+  "SQLITE_DB_FILE": "db/fabric-ca.db"
+
+# only needed if using sqlite (cronjob to copy db file so container can use it)
 cagui_enable_cronjob: false
 cagui_cronjob_path: "/etc/cron.d/fabric-ca-gui"
 cagui_cronjob_template: "cron_fabric-ca-gui.j2"
